@@ -3,25 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Existing background gradient */
+  --gradient-background: linear-gradient(to left, rgb(27 20 41), rgb(20 15 35));
+
+  /* Fallback background color for light mode */
+  --background-color: #f0f0f0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-color: #1e1e1e; /* Dark mode fallback color */
   }
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(
+    --gradient-background
+  ); /* Set the gradient as the body background */
   font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Utility class for the gradient background */
+  .bg-gradient {
+    background: var(--gradient-background);
   }
 }
